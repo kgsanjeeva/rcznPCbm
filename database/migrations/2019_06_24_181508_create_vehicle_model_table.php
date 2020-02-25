@@ -6,26 +6,28 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateVehicleModelTable extends Migration
 {
-  /**
-   * Run the migrations.
-   *
-   * @return void
-   */
-  public function up(){
-    Schema::create('vehicle_models', function (Blueprint $table) {
-      $table->bigIncrements('id');
-      $table->bigInteger('vehicle_make_id');
-      $table->string('title');
-      $table->timestamps();
-    });
-  }
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('vehicle_models', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('vehicle_make_id');
+            $table->string('title');
+            $table->timestamps();
+        });
+    }
 
-  /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
-  public function down(){
-    Schema::dropIfExists('vehicle_model');
-  }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('vehicle_model');
+    }
 }
