@@ -30,7 +30,13 @@ class ServiceRequest extends Model implements Auditable
     {
         foreach (explode(' ', $search) as $item) {
             $query->where(function ($query) use ($item) {
-                $query->where('client_name', 'like', '%' . $item . '%');
+                $query->where('client_name', 'like', '%' . $item . '%')
+                    ->orWhere('client_phone', 'like', '%' . $item . '%')
+                    ->orWhere('client_email', 'like', '%' . $item . '%')
+                    ->orWhere('status', 'like', '%' . $item . '%')
+                    ->orWhereHas('vehicleModel', function ($query) use ($item) {
+                        $query->where('title', 'like', '%' . $item . '%');
+                    });
             });
         }
     }
