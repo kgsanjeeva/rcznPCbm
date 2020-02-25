@@ -28,7 +28,7 @@ class UpdateServiceRequest extends FormRequest
             'vehicle_model_id'  => ['required'],
             'client_name'       => ['required', 'string', 'min:4', 'max:100'],
             'client_email'      => ['required', 'string', 'email', 'max:100'],
-            'client_phone'      => ['required', 'numeric', 'regex:/^[0-9]{10,14}$/'],
+            'client_phone'      => ['required', 'regex:/^[0-9\s\+\-(\)]{9,14}$/'],
             'description'       => ['required', 'string'],
         ];
     }
